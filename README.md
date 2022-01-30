@@ -4,7 +4,7 @@ Information hub for use on small (touch)screen (example 7' touchscreen for Raspb
 
 // INTRO
 Information hub I made for the touchscreen of a Raspberry Pi 2B to display information like weather, calendar, energy usage, a fortune cookie (as known in Unix-land ;-) and play music. Feel free to try it and improve it. As it's my first Python project I wrote, I'm sure there are different ways to make it more efficient. You can use it as a base and work from there. Take a look at the screenshots to see what it looks like on my screen.
-To make it work, you have to enter your details for the OpenWeather api and the caldav calendar ofcourse. The images and data created for the energy-tools are generated with another script on my github, 'energieverbruik' https://github.com/jonakeys/energieverbruik.
+To make it work, you have to enter your details for the OpenWeather api and the caldav calendar ofcourse. The images and data created for the energy-tools are generated with another script on my github, 'energieverbruik' https://github.com/jonakeys/energieverbruik. And also the scripts to music you have to change to your own stations and/or folders.
 
 Feel free to contact me, I hope to hear from you!
 
