@@ -38,7 +38,7 @@ The icons in folder 'weather_icons': Openweathermap.org.
 The icons in folder 'VClouds_weather_icons': VClouds Weather Icons© Created and copyrighted© by VClouds - http://vclouds.deviantart.com/
 
 ## FORTUNE
-The cookies are contanized files of the excellent program from: https://www.shlomifish.org/open-source/projects/fortune-mod/
+The cookies are concatanized files of the excellent program from: https://www.shlomifish.org/open-source/projects/fortune-mod/
 
 ## SCREENSHOTS
 ![tabWeer](https://user-images.githubusercontent.com/4281902/151707159-c39aaefc-f3e2-4fd5-9979-ccdac8215994.png)
