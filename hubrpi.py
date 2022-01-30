@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 import wx
-import m_tabAgenda
-import m_tabFortune
-import m_tabEle
-import m_tabEnergie
-import m_tabGas
-import m_tabMuziek
-import m_tabTools
-import m_tabWat
-import m_tabWeer
+from modules import m_tabAgenda
+from modules import m_tabFortune
+from modules import m_tabEle
+from modules import m_tabEnergie
+from modules import m_tabGas
+from modules import m_tabMuziek
+from modules import m_tabTools
+from modules import m_tabWat
+from modules import m_tabWeer
 from multiprocessing import Process
 
 
