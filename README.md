@@ -11,6 +11,9 @@ https://github.com/python-caldav/caldav
 - fortunate
 https://github.com/Kronuz/fortunate
 
+- pandas (Python dataframes)
+https://pandas.pydata.org/
+
 - requests
 https://docs.python-requests.org/en/latest/
 
