@@ -12,7 +12,8 @@ music_items = {0: "keygenfm",
                7: "bansuri",
                8: "divali",
                9: "surajitdas",
-               10: "amorfm"}
+               10: "amorfm",
+               11: "divinecomedy"}
 PID = 0
 
 
