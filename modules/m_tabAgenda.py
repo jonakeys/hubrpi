@@ -1,17 +1,18 @@
 import wx
+import wx.adv
 import caldav
 from datetime import datetime
 import pytz
 from dateutil.relativedelta import relativedelta
 
 
-FONT_NAAM = "TI-Nspire Sans"
+FONT_NAAM = "IBM Plex Sans"
 KLEUR_DAG = '#1d99f3'
 KLEUR_MAAND = '#1cdc9a'
 KLEUR_TIJD = '#f39c1f'
 
 # Gegevens van caldav-url, gebruikersnaam en wachtwoord
-caldav_url = 'own_caldav_url'
+caldav_url = 'caldav_url'
 username = 'username'
 password = 'password'
 
@@ -60,7 +61,8 @@ class TabAgenda(wx.Panel):
         # Sizers initialiseren
         mainSizer = wx.BoxSizer(wx.VERTICAL)
         topSizer = wx.BoxSizer(wx.HORIZONTAL)
-        kalenderSizer = wx.BoxSizer(wx.HORIZONTAL)
+        contentSizer = wx.BoxSizer(wx.HORIZONTAL)
+        rechtsSizer = wx.BoxSizer(wx.VERTICAL)
         mainSizer.Add(topSizer, 0, wx.ALIGN_CENTER | wx.ALL, 5)
 
         # Label vandaag
@@ -103,7 +105,7 @@ class TabAgenda(wx.Panel):
             if edatum.month != maand:
                 maand = edatum.month
                 nieuwe_maand = str(agenda_data[event][0].strftime("%B")).upper()
-                str_vullen = 32 - len(nieuwe_maand)
+                str_vullen = 24 - len(nieuwe_maand)
                 str_maand = "{} {} {}\n".format('----', nieuwe_maand,
                                                 str_vullen*'-')
                 kalender.SetDefaultStyle(wx.TextAttr(KLEUR_MAAND, wx.NullColour,
@@ -135,13 +137,25 @@ class TabAgenda(wx.Panel):
                 kalender.SetDefaultStyle(wx.TextAttr(KLEUR_MAAND, wx.NullColour,
                                                      font_tijd))
                 kalender.AppendText(event_locatie)
-            kalender.AppendText("\n")
-            # Variabele om te onthouden of er een eerdere dag is behandeld
+                #kalender.AppendText("\n")
+                # Variabele om te onthouden of er een eerdere dag is behandeld
             prev_date = edatum
 
+        kalgraph = wx.adv.CalendarCtrl(self, -1, date=vandaag, size=(200, 200))
+
+        str_zodiac = "graphics/zodiac/{}.png".format(getZodiacSign())
+        zodiac_png = (wx.Image(str_zodiac,
+                               wx.BITMAP_TYPE_ANY).ConvertToBitmap())
+        zodiac_icon = (wx.StaticBitmap(self, -1, zodiac_png, (140, 140),
+                                       (zodiac_png.GetWidth(),
+                                        zodiac_png.GetHeight())))
+
         # Sizers toevoegen
-        kalenderSizer.Add(kalender, 1, wx.EXPAND | wx.ALL, 5)
-        mainSizer.Add(kalenderSizer, 1, wx.EXPAND | wx.ALL, 10)
+        contentSizer.Add(kalender, 1, wx.EXPAND | wx.ALL, 5)
+        rechtsSizer.Add(kalgraph, 0, wx.ALL, 5)
+        rechtsSizer.Add(zodiac_icon, 0, wx.ALIGN_CENTER | wx.ALL, 0)
+        contentSizer.Add(rechtsSizer, 0, wx.ALL, 5)
+        mainSizer.Add(contentSizer, 1, wx.EXPAND | wx.ALL, 5)
         self.SetSizerAndFit(mainSizer)
         self.Layout()
 
@@ -157,7 +171,7 @@ def syncCalendar():
     # Try voor geval ophalen data mislukt
     try:
         client = caldav.DAVClient(url=caldav_url, username=username,
-                                   password=password)
+                                  password=password)
         my_principal = client.principal()
 
         # Gevraagde kalender ophalen
@@ -177,14 +191,14 @@ def syncCalendar():
             if len(str(ev_dtstart)) < 11:
                 ev_dtstart = datetime.strptime(str(ev_dtstart), '%Y-%m-%d')
                 heledag = True
-            # starttijd corrigeren tijdzone
+                # starttijd corrigeren tijdzone
             ev_dtstart = ev_dtstart.astimezone(pytz.timezone('Europe/Amsterdam'))
             # eindtijd
             ev_dtend = event.vobject_instance.vevent.dtend.value
             if len(str(ev_dtend)) < 11:
                 ev_dtend = datetime.strptime(str(ev_dtend), '%Y-%m-%d')
                 ev_dtend = ev_dtend - relativedelta(days=1)
-            # eindtijd corrigeren tijdzone
+                # eindtijd corrigeren tijdzone
             ev_dtend = ev_dtend.astimezone(pytz.timezone('Europe/Amsterdam'))
             # omschrijving
             ev_summary = event.vobject_instance.vevent.summary.value
@@ -192,7 +206,7 @@ def syncCalendar():
                 ev_location = event.vobject_instance.vevent.location.value
             except:
                 ev_location = ""
-            # inhoud aan item in dictionary toevoegen
+                # inhoud aan item in dictionary toevoegen
             temp_data[ev_dtstart] = (ev_dtstart, ev_dtend, ev_summary, heledag,
                                      ev_location)
             if(heledag):
@@ -207,3 +221,77 @@ def syncCalendar():
             agenda_data[i] = temp_data[i]
     except:
         print("Kan kalender niet updaten.")
+
+
+#
+# Krijg huidige dierenriemteken
+#
+def getZodiacSign():
+    result = ""
+    today = datetime.today().date()
+    month = today.month
+    day = today.day
+
+    if month == 1:
+        if day <= 20:
+            result = "capricorn"
+        else:
+            result = "aquarius"
+    elif month == 2:
+        if day <= 18:
+            result = "aquarius"
+        else:
+            result = "pisces"
+    elif month == 3:
+        if day <= 20:
+            result = "pisces"
+        else:
+            result = "aries"
+    elif month == 4:
+        if day <= 19:
+            result = "aries"
+        else:
+            result = "taurus"
+    elif month == 5:
+        if day <= 20:
+            result = "taurus"
+        else:
+            result = "gemini"
+    elif month == 6:
+        if day <= 21:
+            result = "gemini"
+        else:
+            result = "cancer"
+    elif month == 7:
+        if day <= 22:
+            result = "cancer"
+        else:
+            result = "leo"
+    elif month == 8:
+        if day <= 22:
+            result = "leo"
+        else:
+            result = "virgo"
+    elif month == 9:
+        if day <= 22:
+            result = "virgo"
+        else:
+            result = "libra"
+    elif month == 10:
+        if day <= 22:
+            result = "libra"
+        else:
+            result = "scorpio"
+    elif month == 11:
+        if day <= 21:
+            result = "scorpio"
+        else:
+            result = "sagittarius"
+    elif month == 12:
+        if day <= 21:
+            result = "sagittarius"
+        else:
+            result = "capricorn"
+
+    return result
+

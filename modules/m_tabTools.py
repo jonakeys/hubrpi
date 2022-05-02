@@ -1,7 +1,7 @@
 import wx
 
 B_ROTATE = True
-FONT_NAAM = "TI-Nspire Sans"
+FONT_NAAM = "IBM Plex Sans"
 KLEUR_TITEL = '#1d99f3'
 
 

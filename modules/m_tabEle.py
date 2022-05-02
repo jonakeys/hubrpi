@@ -1,5 +1,9 @@
 import wx
 
+FONT_NAAM = "IBM Plex Sans"
+FONT_NAAM_TXT = "IBM Plex Sans"
+KLEUR_TITEL = '#1d99f3'
+
 
 #
 # Tab Elektriciteit
@@ -18,6 +22,16 @@ class TabEle(wx.Panel):
     def updateAll(self):
         self.DestroyChildren()
         bestandsnaam = "graphics/elektriciteitsverbruik.png"
+        # Letterstijlen
+        font_titel = wx.Font(24, wx.NORMAL, wx.NORMAL, wx.BOLD,
+                             faceName=FONT_NAAM)
+        mainSizer = wx.BoxSizer(wx.VERTICAL)
+        topSizer = wx.BoxSizer(wx.HORIZONTAL)
+        mainSizer.Add(topSizer, 0, wx.ALIGN_CENTER | wx.ALL, 5)
+        label_ele = wx.StaticText(self, -1, label="Elektriciteit")
+        label_ele.SetFont(font_titel)
+        label_ele.SetForegroundColour(KLEUR_TITEL)
+        topSizer.Add(label_ele, 0, wx.ALIGN_CENTER | wx.ALL, 5)
 
         # Elektriciteitsverbruikplaatje laden
         ele_bmp = (wx.Image(bestandsnaam,
@@ -25,7 +39,6 @@ class TabEle(wx.Panel):
         elektriciteitsverbruik_bmp = (wx.StaticBitmap(self, -1, ele_bmp))
 
         # Sizer en plaatje toevoegen
-        mainSizer = wx.BoxSizer(wx.VERTICAL)
         mainSizer.Add(elektriciteitsverbruik_bmp, 0, wx.ALL, 5)
         self.SetSizerAndFit(mainSizer)
         self.Layout()

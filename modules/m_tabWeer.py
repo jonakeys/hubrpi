@@ -1,19 +1,19 @@
 import wx
 import requests
 
-FONT_NAAM = "TI-Nspire Sans"
+FONT_NAAM = "IBM Plex Sans"
 KLEUR_DAG = '#1d99f3'
 KLEUR_COND = '#1cdc9a'
 KLEUR_TEMP = '#f67400'
 KLEUR_TEMP_MM = '#f39c1f'
 
 # Enter the api key of openweathermap here
-api_key = "your_own_api_key"
+api_key = "api_key"
 # Base url for the open map api
 root_url = "https://api.openweathermap.org/data/2.5/onecall?"
 # Latitude and longitude of location
-lat = <own_latitude>  # ex. 53.10
-lon = <own_longitude>  # ex. 6.3
+lat = 53.000000
+lon = 6.000000
 # Units
 units = "metric"
 # Language
@@ -258,41 +258,41 @@ class TabWeer(wx.Panel):
         # Toevoegen labels aan sizers
         #
         mainSizer.Add(northSizer, 0, wx.ALIGN_CENTER | wx.ALL, 5)
-        mainSizer.Add(sizer, 1, wx.EXPAND, 2)
+        mainSizer.Add(sizer, 1, wx.EXPAND | wx.ALL, 2)
         northSizer.Add(curr_dt, 1, wx.ALIGN_CENTER | wx.ALL, 5)
         sizer.Add(boxSizer, 1, wx.ALL, 2)
-        zeroSizer.Add(currLSizer, 1, wx.ALL, 3)
-        zeroSizer.Add(currMSizer, 1, wx.ALL, 3)
-        zeroSizer.Add(currRSizer, 1, wx.ALL, 3)
-        boxSizer.Add(curr_icoon, 1, wx.ALIGN_CENTER | wx.ALL, 3)
-        boxSizer.Add(curr_cond, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        boxSizer.Add(zeroSizer, 1, wx.ALIGN_CENTER | wx.ALL, 3)
         sizer.Add(day1Sizer, 1, wx.EXPAND | wx.ALL, 2)
         sizer.Add(day2Sizer, 1, wx.EXPAND | wx.ALL, 2)
-        currLSizer.Add(curr_temp, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        currLSizer.Add(curr_min_max, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        currMSizer.Add(curr_druk, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        currMSizer.Add(curr_voch, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        currMSizer.Add(curr_snel, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        currRSizer.Add(curr_kans_neerslag, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        currRSizer.Add(curr_regen_mm, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        currRSizer.Add(curr_sneeuw_mm, 1, wx.ALIGN_LEFT | wx.ALL, 3)
+        zeroSizer.Add(currLSizer, 0, wx.ALL, 3)
+        zeroSizer.Add(currMSizer, 0, wx.ALL, 3)
+        zeroSizer.Add(currRSizer, 0, wx.ALL, 3)
+        boxSizer.Add(curr_icoon, 1, wx.ALIGN_CENTER | wx.ALL, 2)
+        boxSizer.Add(curr_cond, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        boxSizer.Add(zeroSizer, 0, wx.ALIGN_CENTER | wx.ALL, 2)
+        currLSizer.Add(curr_temp, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        currLSizer.Add(curr_min_max, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        currMSizer.Add(curr_druk, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        currMSizer.Add(curr_voch, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        currMSizer.Add(curr_snel, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        currRSizer.Add(curr_kans_neerslag, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        currRSizer.Add(curr_regen_mm, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        currRSizer.Add(curr_sneeuw_mm, 1, wx.ALIGN_LEFT | wx.ALL, 2)
         day1Sizer.Add(day1_icoon, 1, wx.ALIGN_CENTER | wx.ALL, 5)
-        day1Sizer.Add(day1_dt, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        day1Sizer.Add(day1_cond, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        day1Sizer.Add(day1_temp_dag, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        day1Sizer.Add(day1_min_max, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        day1Sizer.Add(day1_kans_neerslag, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        day1Sizer.Add(day1_regen_mm, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        day1Sizer.Add(day1_sneeuw_mm, 1, wx.ALIGN_LEFT | wx.ALL, 3)
+        day1Sizer.Add(day1_dt, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        day1Sizer.Add(day1_cond, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        day1Sizer.Add(day1_temp_dag, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        day1Sizer.Add(day1_min_max, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        day1Sizer.Add(day1_kans_neerslag, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        day1Sizer.Add(day1_regen_mm, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        day1Sizer.Add(day1_sneeuw_mm, 1, wx.ALIGN_LEFT | wx.ALL, 2)
         day2Sizer.Add(day2_icoon, 1, wx.ALIGN_CENTER | wx.ALL, 5)
-        day2Sizer.Add(day2_dt, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        day2Sizer.Add(day2_cond, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        day2Sizer.Add(day2_temp_dag, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        day2Sizer.Add(day2_min_max, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        day2Sizer.Add(day2_kans_neerslag, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        day2Sizer.Add(day2_regen_mm, 1, wx.ALIGN_LEFT | wx.ALL, 3)
-        day2Sizer.Add(day2_sneeuw_mm, 1, wx.ALIGN_LEFT | wx.ALL, 3)
+        day2Sizer.Add(day2_dt, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        day2Sizer.Add(day2_cond, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        day2Sizer.Add(day2_temp_dag, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        day2Sizer.Add(day2_min_max, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        day2Sizer.Add(day2_kans_neerslag, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        day2Sizer.Add(day2_regen_mm, 1, wx.ALIGN_LEFT | wx.ALL, 2)
+        day2Sizer.Add(day2_sneeuw_mm, 1, wx.ALIGN_LEFT | wx.ALL, 2)
 
         # Sizer aan panel toevoegen en op maat maken
         self.SetSizerAndFit(mainSizer)

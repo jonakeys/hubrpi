@@ -1,7 +1,7 @@
 import pandas as pd
 import wx
 
-FONT_NAAM = "TI-Nspire Sans"
+FONT_NAAM = "IBM Plex Sans"
 KLEUR_TITEL = '#1d99f3'
 KLEUR_KOP = '#1d99f3'
 KLEUR_GETAL = '#f39c1f'

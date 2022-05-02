@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import wx
 from modules import m_tabAgenda
+from modules import m_tabBitcoin
 from modules import m_tabFortune
 from modules import m_tabEle
 from modules import m_tabEnergie
@@ -14,6 +15,10 @@ from multiprocessing import Process
 
 # Dictionary van Notebook die tabbladen bijhoudt
 dict = {"nb": wx.Notebook}
+
+sec_switch = 31  # 31 (=prime) ongeveer halve minuut
+sec_count = 0
+pbar = None
 
 
 class hubrpiApp(wx.App):
@@ -42,12 +47,23 @@ class MyPanel(wx.Panel):
         self.InitPanel()
         self._on_clock_timer(None)
         self.update_timer = wx.Timer(self, -1)
-        self.update_timer.Start(31000)  # 31 (=prime) ongeveer halve minuut
+        self.update_timer.Start(1000)
         self.Bind(wx.EVT_TIMER, self._on_clock_timer, self.update_timer)
 
     def _on_clock_timer(self, event):
+        global sec_count
         if m_tabTools.B_ROTATE:
-            self.switchTab()
+            if sec_count == 0:
+                self.switchTab()
+            if sec_count < sec_switch:
+                pbar.SetValue(sec_count)
+                sec_count += 1
+            else:
+                pbar.SetValue(sec_count)
+                sec_count = 0
+        else:
+            sec_count = 0
+            pbar.SetValue(0)
 
     def StartWeerTab(self):
         tabWeer = m_tabWeer.TabWeer(dict['nb'])
@@ -62,6 +78,9 @@ class MyPanel(wx.Panel):
         dict['nb'].AddPage(tabFortune, "Fortune")
 
     def InitPanel(self):
+        global pbar
+        pbar = wx.Gauge(self, -1, range=sec_switch, style=wx.GA_VERTICAL,
+                        size=(5, 480))
         # Tabbladen toevoegen aan Notebook
         dict['nb'] = wx.Notebook(self)
         p1 = Process(target=self.StartWeerTab())
@@ -73,6 +92,7 @@ class MyPanel(wx.Panel):
         # tabWeer = m_tabWeer.TabWeer(dict['nb'])
         # tabAgenda = m_tabAgenda.TabAgenda(dict['nb'])
         # tabFortune = m_tabFortune.TabFortune(dict['nb'])
+        tabBitcoin = m_tabBitcoin.TabBitcoin(dict['nb'])
         tabGas = m_tabGas.TabGas(dict['nb'])
         tabEle = m_tabEle.TabEle(dict['nb'])
         tabWat = m_tabWat.TabWat(dict['nb'])
@@ -85,6 +105,7 @@ class MyPanel(wx.Panel):
         # dict['nb'].AddPage(tabWeer, "Weer")
         # dict['nb'].AddPage(tabAgenda, "Agenda")
         # dict['nb'].AddPage(tabFortune, "Fortune")
+        dict['nb'].AddPage(tabBitcoin, "Bitcoin")
         dict['nb'].AddPage(tabGas, "Gas")
         dict['nb'].AddPage(tabEle, "Elektriciteit")
         dict['nb'].AddPage(tabWat, "Water")
@@ -93,11 +114,12 @@ class MyPanel(wx.Panel):
         dict['nb'].AddPage(tabTools, "Tools")
         # Laatste 'wissel'tab instellen, zodat app bij openen netjes
         # de eerste tab selecteert ;-)
-        dict['nb'].ChangeSelection(2)
+        dict['nb'].ChangeSelection(3)
 
         # Sizers initialiseren
         mainSizer = wx.BoxSizer(wx.VERTICAL)
-        centerSizer = wx.BoxSizer()
+        centerSizer = wx.BoxSizer(wx.HORIZONTAL)
+        centerSizer.Add(pbar, 0, wx.ALL, 0)
         centerSizer.Add(dict['nb'], 1, wx.EXPAND)
         mainSizer.Add(centerSizer, 1, wx.EXPAND | wx.ALL, 5)
         self.SetSizerAndFit(mainSizer)
@@ -108,10 +130,10 @@ class MyPanel(wx.Panel):
         selected_page = dict['nb'].GetSelection()
         new_page = 0
         # Automatisch roteren bij selectie van eerste drie tabbladen
-        if selected_page < 3:
-            if selected_page < 2:
+        if selected_page < 4:
+            if selected_page < 3:
                 new_page = selected_page + 1
-            dict['nb'].ChangeSelection(new_page)
+                dict['nb'].ChangeSelection(new_page)
 
 
 # Hoofdcode van app starten

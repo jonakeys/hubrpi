@@ -1,5 +1,9 @@
 import wx
 
+FONT_NAAM = "IBM Plex Sans"
+FONT_NAAM_TXT = "IBM Plex Sans"
+KLEUR_TITEL = '#1d99f3'
+
 
 #
 # Tab Gas
@@ -18,6 +22,16 @@ class TabGas(wx.Panel):
     def updateAll(self):
         self.DestroyChildren()
         bestandsnaam = "graphics/gasverbruik.png"
+        # Letterstijlen
+        font_titel = wx.Font(24, wx.NORMAL, wx.NORMAL, wx.BOLD,
+                             faceName=FONT_NAAM)
+        mainSizer = wx.BoxSizer(wx.VERTICAL)
+        topSizer = wx.BoxSizer(wx.HORIZONTAL)
+        mainSizer.Add(topSizer, 0, wx.ALIGN_CENTER | wx.ALL, 5)
+        label_gas = wx.StaticText(self, -1, label="Gas")
+        label_gas.SetFont(font_titel)
+        label_gas.SetForegroundColour(KLEUR_TITEL)
+        topSizer.Add(label_gas, 0, wx.ALIGN_CENTER | wx.ALL, 5)
 
         # Gasverbruikplaatje laden
         gas_bmp = (wx.Image(bestandsnaam,
@@ -25,7 +39,6 @@ class TabGas(wx.Panel):
         gasverbruik_bmp = (wx.StaticBitmap(self, -1, gas_bmp))
 
         # Sizer en plaatje toevoegen
-        mainSizer = wx.BoxSizer(wx.VERTICAL)
         mainSizer.Add(gasverbruik_bmp, 0, wx.ALL, 5)
         self.SetSizerAndFit(mainSizer)
         self.Layout()

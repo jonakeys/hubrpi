@@ -2,10 +2,14 @@ import wx
 import psutil
 import subprocess
 
+FONT_NAAM = "IBM Plex Sans"
+FONT_NAAM_TXT = "IBM Plex Sans"
+KLEUR_TITEL = '#1d99f3'
+
 music_items = {0: "keygenfm",
                1: "radiocaprice",
                2: "radiomontecarlo",
-               3: "radionuovasangiorgio",
+               3: "kisskissradio",
                4: "musicforcats",
                5: "milindchittal",
                6: "ancientbeautyoftheveena",
@@ -13,7 +17,9 @@ music_items = {0: "keygenfm",
                8: "divali",
                9: "surajitdas",
                10: "amorfm",
-               11: "divinecomedy"}
+               11: "divinecomedy",
+               12: "bluestrash",
+               13: "reverend"}
 PID = 0
 
 
@@ -36,7 +42,17 @@ class TabMuziek(wx.Panel):
         self.DestroyChildren()
         mainSizer = wx.BoxSizer(wx.VERTICAL)
         centerSizer = wx.BoxSizer(wx.HORIZONTAL)
-        buttonSizer = wx.GridBagSizer(10, 10)
+        buttonSizer = wx.GridBagSizer(2, 2)
+        # Letterstijlen
+        font_titel = wx.Font(24, wx.NORMAL, wx.NORMAL, wx.BOLD,
+                             faceName=FONT_NAAM)
+        mainSizer = wx.BoxSizer(wx.VERTICAL)
+        topSizer = wx.BoxSizer(wx.HORIZONTAL)
+        mainSizer.Add(topSizer, 0, wx.ALIGN_CENTER | wx.ALL, 5)
+        label_muziek = wx.StaticText(self, -1, label="Muziek")
+        label_muziek.SetFont(font_titel)
+        label_muziek.SetForegroundColour(KLEUR_TITEL)
+        topSizer.Add(label_muziek, 0, wx.ALIGN_CENTER | wx.ALL, 5)
 
         # Knoppen voor muziekitems maken
         for i in range(len(music_items)):
@@ -56,7 +72,7 @@ class TabMuziek(wx.Panel):
             itemBtn.Bind(wx.EVT_BUTTON,
                          lambda event, temp=shNaam: self.PlayMuziek(
                              event, PID, temp))
-            buttonSizer.Add(itemBtn, flag=wx.ALL, pos=(row, col), border=5)
+            buttonSizer.Add(itemBtn, flag=wx.ALL, pos=(row, col), border=2)
 
         # Stopknop
         stopBtn = wx.Button(self, -1, label="Stop muziek", size=(100, 100))

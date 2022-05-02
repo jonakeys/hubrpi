@@ -1,8 +1,8 @@
 import wx
 from fortunate import Fortunate
 
-FONT_NAAM = "TI-Nspire Sans"
-FONT_NAAM_TXT = " TI-Nspire"
+FONT_NAAM = "IBM Plex Sans"
+FONT_NAAM_TXT = "IBM Plex Serif"
 KLEUR_TITEL = '#1d99f3'
 
 
@@ -31,7 +31,7 @@ class TabFortune(wx.Panel):
         # Letterstijlen
         font_titel = wx.Font(24, wx.NORMAL, wx.NORMAL, wx.BOLD,
                              faceName=FONT_NAAM)
-        font_tekst = wx.Font(18, wx.NORMAL, wx.NORMAL, wx.NORMAL,
+        font_tekst = wx.Font(16, wx.NORMAL, wx.NORMAL, wx.NORMAL,
                              faceName=FONT_NAAM_TXT)
 
         # Sizers
