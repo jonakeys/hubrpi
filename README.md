@@ -1,4 +1,4 @@
-# hubrpi
+b# hubrpi
 Information hub for use on small (touch)screen (example 7' touchscreen for Raspberry PI).
 
 ## INTRO
@@ -41,12 +41,16 @@ The icons in folder 'VClouds_weather_icons': VClouds Weather Icons© Created and
 The cookies are concatanized files of the excellent program from: https://www.shlomifish.org/open-source/projects/fortune-mod/
 
 ## SCREENSHOTS
-![tabWeer](https://user-images.githubusercontent.com/4281902/151707159-c39aaefc-f3e2-4fd5-9979-ccdac8215994.png)
-![tabAgenda](https://user-images.githubusercontent.com/4281902/151707203-607e69a7-7a0a-4191-b0f7-1819c8f1334b.png)
-![tabFortune](https://user-images.githubusercontent.com/4281902/151707223-eca351e1-c98f-4d30-944b-ef4f1b0aa484.png)
-![tabGas](https://user-images.githubusercontent.com/4281902/151707207-cd6c2323-d4ef-468a-b651-07ad207a010e.png)
-![tabElektriciteit](https://user-images.githubusercontent.com/4281902/151707209-de99e2dc-b525-4cfd-a260-4e24c8e1764a.png)
-![tabWater](https://user-images.githubusercontent.com/4281902/151707212-8a0592d7-a728-4093-9ebf-c1627a615b23.png)
-![tabEnergie](https://user-images.githubusercontent.com/4281902/151707214-af28575e-be3f-4b37-ac92-19cb5141f9aa.png)
-![tabMuziek](https://user-images.githubusercontent.com/4281902/151707218-680c6eb9-f614-4827-936f-9a06c7716e65.png)
-![tabTools](https://user-images.githubusercontent.com/4281902/151707232-ec674438-3129-4624-8a8d-3650bdd4d291.png)
+![tabWeer](https://user-images.githubusercontent.com/4281902/166310427-76b9e265-a0a3-4804-b8ff-bd4df72ea7e5.png)
+![tabAgenda](https://user-images.githubusercontent.com/4281902/166310396-862619af-02c4-4576-8146-9a8f8e4eb6c8.png)
+![tabFortune](https://user-images.githubusercontent.com/4281902/166310417-93c85f79-b270-4c38-b683-894eda8ad6e1.png)
+![tabBitcoin](https://user-images.githubusercontent.com/4281902/166310411-a3f9cb67-cde4-4a44-bedb-5c3e6a4a50a8.png)
+![tabGas](https://user-images.githubusercontent.com/4281902/166310419-fd7d4ef3-6642-4df8-92fd-58c767957dda.png)
+![tabElektriciteit](https://user-images.githubusercontent.com/4281902/166310412-fe84c1f1-ce9b-4184-bb6e-1e2bbd48d90c.png)
+![tabWater](https://user-images.githubusercontent.com/4281902/166310425-8cdfb94d-08f3-49f2-bc53-836cb7940ec0.png)
+![tabEnergie](https://user-images.githubusercontent.com/4281902/166310416-edecfaba-f1f3-4751-bf2e-83db515ab0fa.png)
+![tabMuziek](https://user-images.githubusercontent.com/4281902/166310422-f58eab24-b587-4171-94c1-bda10868df29.png)
+![tabTools](https://user-images.githubusercontent.com/4281902/166310423-e6275658-c916-4aa0-bf21-7560120baf40.png)
+
+
+
