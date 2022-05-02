@@ -44,13 +44,10 @@ The cookies are concatanized files of the excellent program from: https://www.sh
 ![tabWeer](https://user-images.githubusercontent.com/4281902/166310427-76b9e265-a0a3-4804-b8ff-bd4df72ea7e5.png)
 ![tabAgenda](https://user-images.githubusercontent.com/4281902/166310396-862619af-02c4-4576-8146-9a8f8e4eb6c8.png)
 ![tabFortune](https://user-images.githubusercontent.com/4281902/166310417-93c85f79-b270-4c38-b683-894eda8ad6e1.png)
-![tabBitcoin](https://user-images.githubusercontent.com/4281902/166310411-a3f9cb67-cde4-4a44-bedb-5c3e6a4a50a8.png)
+![tabBitcoin](https://user-images.githubusercontent.com/4281902/166327601-596718e5-b564-439d-946c-15b336044256.png)
 ![tabGas](https://user-images.githubusercontent.com/4281902/166310419-fd7d4ef3-6642-4df8-92fd-58c767957dda.png)
 ![tabElektriciteit](https://user-images.githubusercontent.com/4281902/166310412-fe84c1f1-ce9b-4184-bb6e-1e2bbd48d90c.png)
 ![tabWater](https://user-images.githubusercontent.com/4281902/166310425-8cdfb94d-08f3-49f2-bc53-836cb7940ec0.png)
 ![tabEnergie](https://user-images.githubusercontent.com/4281902/166310416-edecfaba-f1f3-4751-bf2e-83db515ab0fa.png)
 ![tabMuziek](https://user-images.githubusercontent.com/4281902/166310422-f58eab24-b587-4171-94c1-bda10868df29.png)
 ![tabTools](https://user-images.githubusercontent.com/4281902/166310423-e6275658-c916-4aa0-bf21-7560120baf40.png)
-
-
-
